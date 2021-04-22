@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelPage.vue should match the snapshot 1`] = `
+<div>
+  <h1>
+    better This is an Channel Page
+  </h1>
+</div>
+`;
