@@ -3,37 +3,17 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <Search msg="Welcome to Your Vue.js App" /> 
     <div class="container">
-      <div class="select-wrappers">
+    <div class="select-wrappers">
         <v-select :options="UploadedSince"></v-select>
         <v-select :options="FilterType"></v-select>
-      </div>
-      <div class="border">
-        <div class="channel-section">
-          <a href="#">
-            <img src="@/assets/img/me-copy.jpeg" class="channel-image" alt="">
-          </a>
-          <div class="channel-info">
-            <a href="#">
-              <h3>Channel Name</h3>
-              <p>150 Videos</p>
-              <p>15,000 Subscriber</p>
-            </a>
-
-          </div>
-        </div>
-        <div class="video-section">
-          <a href="#" class='video-image-wrapper'>
-            <img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="">
-          </a>
-          <div class="video-info">
-            <a href="#">
-              <h3>Channel Name</h3>
-              <p>150 Videos</p>
-              <p>15,000 Subscriber</p>
-            </a>
-
-          </div>
-        </div>
+    </div>
+      <div class="border d-flex">
+        <ChannelView />
+        <VideoView />
+        <playlistView />
+        <a href="#" class="show-more">
+          Show more Items
+        </a>
       </div>
     </div>
   </div>
@@ -41,13 +21,19 @@
 
 <script>
 // @ is an alias to /src
-import Search from "@/components/search/Search.vue";
+import Search from "@/components/search/search.vue";
+import ChannelView from "@/components/channel/channel.vue";
+import VideoView from "@/components/video/video.vue";
+import playlistView from "@/components/playlist/playlist.vue";
 import 'vue-select/dist/vue-select.css';
 
 export default {
   name: "SearchPage",
   components: {
     Search,
+    ChannelView,
+    VideoView,
+    playlistView
   },
   data() {
     return {
@@ -66,7 +52,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 h3 {
   margin: 0;
   font-size: 20px;
@@ -88,36 +74,21 @@ p {
     }
   }
 }
-.container {
-    padding: 0 5px;
+
+.show-more {
+    display: block;
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 1px solid #c7c7c7;
+    border-bottom: 1px solid #c7c7c7;
+    width: 100%;
 }
-.channel-section {
-  display: flex;
-  align-items: center;
-}
-.video-section {
-  display: flex;
-  align-items: start;
-}
-.channel-info, .video-info {
-  display: flex
-}
-.video-info {
+@media (min-width:1024px) {
+  .select-wrappers {
+    display: none;
+  }
   h3 {
-    font-size: 18px;
+    font-size: 28px;
   }
-  p {
-    font-size: 14px;
-  }
-}
-.channel-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-inline-end: 20px;
-}
-.video-image-wrapper {
-    flex: 0 0 60%;
-    margin-inline-end: 10px;
 }
 </style>

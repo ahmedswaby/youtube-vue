@@ -8,11 +8,11 @@
 @import './normalize.css';
 @font-face {
   font-family: 'icomoon';
-  src:  url('./assets/fonts/icons/icomoon.eot?a38ew6');
-  src:  url('./assets/fonts/icons/icomoon.eot?a38ew6#iefix') format('embedded-opentype'),
-    url('./assets/fonts/icons/icomoon.ttf?a38ew6') format('truetype'),
-    url('./assets/fonts/icons/icomoon.woff?a38ew6') format('woff'),
-    url('./assets/fonts/icons/icomoon.svg?a38ew6#icomoon') format('svg');
+  src:  url('./assets/fonts/icons/icomoon.eot?cgkgcn');
+  src:  url('./assets/fonts/icons/icomoon.eot?cgkgcn#iefix') format('embedded-opentype'),
+    url('./assets/fonts/icons/icomoon.ttf?cgkgcn') format('truetype'),
+    url('./assets/fonts/icons/icomoon.woff?cgkgcn') format('woff'),
+    url('./assets/fonts/icons/icomoon.svg?cgkgcn#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -42,6 +42,9 @@
 .icon-youtube:before {
   content: "\ea9d";
 }
+.icon-youtube2:before {
+  content: "\ea9e";
+}
 
 
 #app {
@@ -51,6 +54,23 @@
   max-width:100%;
   height: auto;
 }
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.space-between {
+  justify-content: space-between;
+}
+.container {
+
+  padding: 0 5px;
+  @media (min-width:1024px) {
+    padding: 0 15px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
 .border {
     border: 1px solid #c7c7c7;
     padding: 10px;

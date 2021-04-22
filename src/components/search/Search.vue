@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Header from './Header'
+import Header from '../header/Header.vue'
 export default {
-  name: "Search",
+  name: "search",
   components: {
     Header
   },

@@ -1,5 +1,5 @@
-describe('the Chat Message S ervices', () => {
-	it('should retur nan array of messages ', () => {
+describe('test for search component', () => {
+	it('should return an value', () => {
 		let price = 23;
 		expect(price).toBeGreaterThan(22);
 	});
