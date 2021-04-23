@@ -7,8 +7,8 @@
                     <span v-if="!searchOpen">spongepop</span>
                 </div>
                 <div class='search-wrapper'>
-                    <form>
-                        <input  type="search" name="search" id="" :class="searchOpen ? 'search-input opened': 'search-input'">
+                    <form action="/search">
+                        <input  type="search" name="query" :class="searchOpen ? 'search-input opened': 'search-input'">
                         <button type="submit">
                             <i class="icon-search"></i>
                         </button>
@@ -38,6 +38,8 @@ header {
     background-color: rgb(255, 0, 0);
     color: #FFF;
     padding: 15px 10px;
+    position: fixed;
+    width: calc(100% - 20px);
 }
 .header__Logo-side {
     i {
@@ -55,7 +57,7 @@ header {
     input {
         margin-inline-end: 10px;
     }
-     button {
+    button {
         display: none;
     }
     i {
@@ -77,6 +79,7 @@ a {
 @media (min-width:1024px) {
     header {
         background-color: #fff;
+        position: relative;
     }
     .search-input {
         display: block;

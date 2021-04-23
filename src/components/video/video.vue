@@ -5,7 +5,7 @@
 		</a>
 		<div class="video-info">
 			<a href="#">
-				<h3>Channel Name</h3>
+				<h3>Video Name</h3>
 				<p>150 Videos</p>
 				<p>15,000 Subscriber</p>
 			</a>

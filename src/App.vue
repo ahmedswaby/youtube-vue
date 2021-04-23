@@ -58,6 +58,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+.d-sm-none {
+  display: none;
+}
 .space-between {
   justify-content: space-between;
 }
@@ -81,5 +84,16 @@ a {
   color: #2c3e50;
 }
 
+@media (min-width:1024px) {
+    .d-md-none {
+      display: none;
+  }
+  .d-md-block {
+    display: block;
+  }
+  .d-md-flex {
+    display: flex;
+  }
+}
 
 </style>

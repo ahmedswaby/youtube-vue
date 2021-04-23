@@ -1,12 +1,12 @@
 <template>
   <div>
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <Search msg="Welcome to Your Vue.js App" /> 
+    <Search /> 
+    <main>
     <div class="container">
-    <div class="select-wrappers">
-        <v-select :options="UploadedSince"></v-select>
-        <v-select :options="FilterType"></v-select>
-    </div>
+      <div class="select-wrappers">
+          <v-select :options="UploadedSince"></v-select>
+          <v-select :options="FilterType"></v-select>
+      </div>
       <div class="border d-flex">
         <ChannelView />
         <VideoView />
@@ -16,6 +16,7 @@
         </a>
       </div>
     </div>
+    </main>
   </div>
 </template>
 
@@ -53,6 +54,9 @@ export default {
 };
 </script>
 <style lang="scss">
+main {
+  padding-top: 70px;
+}
 h3 {
   margin: 0;
   font-size: 20px;
@@ -84,6 +88,9 @@ p {
     width: 100%;
 }
 @media (min-width:1024px) {
+  main {
+    padding-top: 0;
+  }
   .select-wrappers {
     display: none;
   }

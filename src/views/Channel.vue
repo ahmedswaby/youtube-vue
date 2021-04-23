@@ -1,6 +1,7 @@
 <template>
 <div>
-    <Search />  
+    <Search />
+    <main>
     <div class="container">
       <div class="channel-cover">
         <div class="cover-image" :style="{ backgroundImage:'url('+ image +')'}"></div>
@@ -28,6 +29,8 @@
         </div>
       </div>
     </div>
+    </main>
+
 </div>
 </template>
 <script>
