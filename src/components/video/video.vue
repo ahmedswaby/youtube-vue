@@ -1,11 +1,11 @@
 <template>
 	<div class="video-section">
 		<router-link to="video/1"  class="video-image-wrapper">
-			<img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="" />
+			<img :src="videoDetails.snippet ? videoDetails.snippet.thumbnails.medium.url: ''" class="img-fluid" alt="" />
 		</router-link>
 		<div class="video-info">
             <router-link to="video/1">
-				<h3>Video Name</h3>
+				<h3>{{ videoDetails.snippet ? videoDetails.snippet.title : '' }}</h3>
 				<p>150 Videos</p>
 				<p>15,000 Subscriber</p>
 			</router-link>
@@ -14,9 +14,25 @@
 </template>
 
 <script>
-	export default {
-		name: 'VideoView',
-	};
+import {fetchVideo} from '@/services/services'
+export default {
+	name: 'VideoView',
+	props: {
+		videoId: {
+			type: String,
+			required: true
+		}
+	},
+	data() {
+		return {
+			videoDetails: {}
+		}
+	},
+	async mounted() {
+		const data = await fetchVideo(this.videoId)
+		this.videoDetails = data.items[0]
+	}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,4 @@
 import { mount } from "@vue/test-utils";
-// import ChannelPage from "@/views/channel.vue";
 import Header from '@/components/header/Header.vue';
 
 describe('Header.vue', () => {

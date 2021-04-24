@@ -14,9 +14,9 @@
 </template>
 
 <script>
-    export default {
-        name: 'playlistView'
-    }
+export default {
+	name: 'playlistView'
+}
 </script>
 <style lang="scss" scoped>
 .video-section {

@@ -2,7 +2,7 @@
     <div>
         <search />
         <div class="container">
-            <iframe id="ytplayer" type="text/html" width="100%" height="200px"
+            <iframe id="ytplayer" type="text/html" width="100%" height="300px"
         :src="`https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=${url}`"
         frameborder="0"></iframe>
         <div class="video-title">

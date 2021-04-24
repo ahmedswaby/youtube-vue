@@ -42,17 +42,22 @@
     border-radius: 50%;
     margin-inline-end: 20px;
 }
-.sm-section {
 
-}
 @media (min-width:1024px) {
-    .channel-link {
+  .channel-link {
       min-width: 60%;
       flex: 0 0 60%;
       display: flex;
-      align-items: center;
+      align-items: start;
       justify-content: center;
+    
+  }
+  .channel-info {
+    .channel-link {
+      flex: 1 0;
+      flex-direction: column;
     }
+  }
     .channel-section {
       &.sm-section {
         width: 70%;

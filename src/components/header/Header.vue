@@ -23,10 +23,11 @@
 </template>
 
 <script>
-    export default {
-        name: 'Header',
-        data() {
-            return {
+
+export default {
+    name: 'Header',
+    data() {
+        return {
                 searchOpen: false
             }
         },

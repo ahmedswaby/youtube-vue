@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <Search /> 
     <main>
     <div class="container">
@@ -8,8 +8,11 @@
           <v-select :options="FilterType"></v-select>
       </div>
       <div class="border d-flex">
-        <ChannelView />
-        <VideoView />
+        <h2>  About {{ pageInfo.totalResults }} results</h2>
+        <!-- <ChannelView /> -->
+        <div v-for="(item, index) in searchData" :key="index">
+          <VideoView v-if="item.id.kind === 'youtube#video'" :videoId="item.id.videoId"/>
+        </div>
         <playlistView />
         <a href="#" class="show-more" @click.prevent="load" v-if="!loading">
           Show more Items
@@ -21,21 +24,23 @@
     </div>
     </main>
   </div>
+  <Loading v-else/>
 </template>
 
 <script>
 // @ is an alias to /src
 import Search from "@/components/search/search.vue";
-import ChannelView from "@/components/channel/channel.vue";
+// import ChannelView from "@/components/channel/channel.vue";
 import VideoView from "@/components/video/video.vue";
 import playlistView from "@/components/playlist/playlist.vue";
+import { fetchSearch } from '@/services/services';
 import 'vue-select/dist/vue-select.css';
 
 export default {
   name: "SearchPage",
   components: {
     Search,
-    ChannelView,
+    // ChannelView,
     VideoView,
     playlistView,
     Loading: () => import('@/components/loading/loading.vue')
@@ -43,6 +48,8 @@ export default {
   data() {
     return {
       loading: false,
+      searchData: [],
+      pageInfo: {},
       UploadedSince: [
         'all',
         'test1',
@@ -55,6 +62,15 @@ export default {
       ]
 
     }
+  },
+  async mounted() {
+    this.loading = true
+    const searchData = await fetchSearch();
+    console.log(searchData);
+    this.searchData.push(...searchData.items)
+    this.pageInfo = searchData.pageInfo
+    this.loading = false
+
   },
   methods: {
     load() {

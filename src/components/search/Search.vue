@@ -10,10 +10,7 @@ export default {
   name: "search",
   components: {
     Header
-  },
-  props: {
-    msg: String,
-  },
+  }
 };
 </script>
 
