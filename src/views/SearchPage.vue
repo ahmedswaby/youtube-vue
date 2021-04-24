@@ -11,9 +11,12 @@
         <ChannelView />
         <VideoView />
         <playlistView />
-        <a href="#" class="show-more">
+        <a href="#" class="show-more" @click.prevent="load" v-if="!loading">
           Show more Items
         </a>
+        <div class="d-flex justify-center" v-if="loading">
+          <Loading />
+        </div>
       </div>
     </div>
     </main>
@@ -34,10 +37,12 @@ export default {
     Search,
     ChannelView,
     VideoView,
-    playlistView
+    playlistView,
+    Loading: () => import('@/components/loading/loading.vue')
   },
   data() {
     return {
+      loading: false,
       UploadedSince: [
         'all',
         'test1',
@@ -50,6 +55,12 @@ export default {
       ]
 
     }
+  },
+  methods: {
+    load() {
+      this.loading = true
+    }
+    
   }
 };
 </script>
@@ -80,7 +91,8 @@ p {
 }
 
 .show-more {
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 15px 20px;
     text-align: center;
     border-top: 1px solid #c7c7c7;

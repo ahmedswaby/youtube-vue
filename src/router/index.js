@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/',
-		redirect: '/search'
+		redirect: '/search',
 	},
 	{
 		path: '/search',
@@ -15,16 +15,16 @@ const routes = [
 		component: SearchPage,
 	},
 	{
-		path: '/channel',
-		name: 'About',
+		path: '/channel/:id',
+		name: 'Channel',
 		component: () =>
-			import(/* webpackChunkName: "about" */ '../views/Channel.vue'),
+			import(/* webpackChunkName: "Channel" */ '../views/Channel.vue'),
 	},
 	{
-		path: '/video/',
-		name: 'About',
+		path: '/video/:id',
+		name: 'Video',
 		component: () =>
-			import(/* webpackChunkName: "about" */ '../views/Video.vue'),
+			import(/* webpackChunkName: "Video" */ '../views/Video.vue'),
 	},
 ];
 

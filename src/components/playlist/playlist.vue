@@ -1,14 +1,14 @@
 <template>
     <div class="video-section playlist">
-		<a href="#" class="video-image-wrapper">
+        <router-link to="video/1" class="video-image-wrapper">
             <div class="overlay-number">40</div>
-			<img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="" />
-		</a>
+            <img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="" />
+        </router-link>
 		<div class="video-info">
-			<a href="#">
-				<h3>playList Name</h3>
-				<p>150 Videos</p>
-			</a>
+            <router-link to="video/1">
+                <h3>playList Name</h3>
+                <p>150 Videos</p>
+            </router-link>
 		</div>
 	</div>
 </template>

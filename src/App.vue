@@ -58,6 +58,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+.justify-center {
+  justify-content: center;
+}
 .d-sm-none {
   display: none;
 }

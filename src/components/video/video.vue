@@ -1,14 +1,14 @@
 <template>
 	<div class="video-section">
-		<a href="#" class="video-image-wrapper">
+		<router-link to="video/1"  class="video-image-wrapper">
 			<img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="" />
-		</a>
+		</router-link>
 		<div class="video-info">
-			<a href="#">
+            <router-link to="video/1">
 				<h3>Video Name</h3>
 				<p>150 Videos</p>
 				<p>15,000 Subscriber</p>
-			</a>
+			</router-link>
 		</div>
 	</div>
 </template>
