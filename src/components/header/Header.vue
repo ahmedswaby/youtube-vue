@@ -41,6 +41,7 @@ header {
     padding: 15px 10px;
     position: fixed;
     width: calc(100% - 20px);
+    z-index: 1020;
 }
 .header__Logo-side {
     i {
