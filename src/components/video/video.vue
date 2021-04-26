@@ -1,6 +1,6 @@
 <template>
 	<div class="video-section">
-		<router-link to="video/1"  class="video-image-wrapper">
+		<router-link :to="'video/'+ videoDetails.id"  class="video-image-wrapper">
 			<img :src="videoDetails.snippet ? videoDetails.snippet.thumbnails.medium.url: ''" class="img-fluid" alt="" />
 		</router-link>
 		<div class="video-info">

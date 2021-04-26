@@ -2,18 +2,21 @@
     <div>
         <search />
         <div class="container">
+            <!-- M7lc1UVf-VE -->
             <iframe id="ytplayer" type="text/html" width="100%" height="300px"
-        :src="`https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=${url}`"
+        :src="'https://www.youtube.com/embed/'+ this.$route.params.id"
         frameborder="0"></iframe>
         <div class="video-title">
-            <h1>Name of the video</h1>
-            <p class="d-flex d-md-none"><span>channel Name</span> 122, 3323</p>
+            <h1>{{videoDetails.title}}</h1>
+            <p class="d-flex d-md-none"><span>{{videoDetailschannelTitle}}</span> 
+            <!-- 122, 3323 -->
+            </p>
         </div>
         <!-- <div class="video-control"></div> -->
         <div class=" d-sm-none d-md-flex">
-            <ChannelView size="sm"/>
+            <ChannelView size="sm" :data="videoDetails"/>
         </div>
-        <VideoView />
+        <!-- <VideoView /> -->
         </div>
         
     </div>
@@ -21,22 +24,26 @@
 
 <script>
 import search from '@/components/search/search';
-import VideoView from '@/components/video/video';
+// import VideoView from '@/components/video/video';
 import ChannelView from '@/components/channel/channel';
-
+import { fetchVideo } from '@/services/services'
 export default {
     name: 'VideoDetails',
     components: {
         search,
-        VideoView,
+        // VideoView,
         ChannelView
     },
     data() {
         return {
-            url: 'http://example.com',
-            
+            videoDetails: {},
         }
-    }
+    },
+    created: async function () {
+        const data = await fetchVideo(this.$route.params.id)
+        this.videoDetails = data.items[0].snippet
+        console.log(data.items[0].snippet);
+    },
 }
 </script>
 

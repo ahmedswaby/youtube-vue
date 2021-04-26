@@ -10,10 +10,7 @@
       <div class="border d-flex">
         <h2>  About {{ pageInfo.totalResults }} results</h2>
         <!-- <ChannelView /> -->
-        <!-- <div v-for="(item, index) in searchData" :key="index"> -->
-          <!-- v-if="item.id.kind === 'youtube#video'"  -->
-          <VideoView  v-for="(item, index) in searchdata" :key="index" :videoId="item.id.videoId"/>
-        <!-- </div> -->
+        <VideoView  v-for="(item, index) in searchdata" :key="index" :videoId="item.id.videoId"/>
         <playlistView />
         <a href="#" class="show-more" @click.prevent="load" v-if="!loading">
           Show more Items
@@ -50,6 +47,7 @@ export default {
     return {
       loading: false,
       pageInfo: {},
+      searchdata: {},
       UploadedSince: [
         'all',
         'test1',
@@ -63,20 +61,15 @@ export default {
 
     }
   },
-  async mounted() {
+  async created() {
     this.loading = true
     const searchData = await fetchSearch();
     console.log(searchData);
-    await this.searchdata(...searchData.items)
-    // this.pageInfo = searchData.pageInfo
+    this.searchdata = searchData.items.filter(item => item.id.kind === 'youtube#video')
+    this.pageInfo = searchData.pageInfo
     this.loading = false
+    console.log(this.searchdata);
 
-  },
-  computed: {
-    async searchdata(data) {
-      const filteredVideos = await data.filter(item => item.id.kind === 'youtube#video')
-      return filteredVideos
-    }
   },
   methods: {
     load() {
