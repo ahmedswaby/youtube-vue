@@ -2,7 +2,7 @@
     <div class="video-section playlist">
         <router-link to="video/1" class="video-image-wrapper">
             <div class="overlay-number">40</div>
-            <img src="@/assets/img/me-copy.jpeg" class="img-fluid" alt="" />
+            <img src="@/assets/img/placeholder.jpeg" class="img-fluid" alt="" />
         </router-link>
 		<div class="video-info">
             <router-link to="video/1">

@@ -6,7 +6,7 @@
       <div class="channel-cover">
         <div class="cover-image" :style="{ backgroundImage:'url('+ image +')'}"></div>
         <div class="info-wrapper">
-          <img src="@/assets/img/me-copy.jpeg" alt="" class="img-fluid avatar">
+          <img src="@/assets/img/placeholder.jpeg" alt="" class="img-fluid avatar">
           <div class="info-channel">
             <h1>
               Name of channel
@@ -34,7 +34,7 @@
 </div>
 </template>
 <script>
-import image from '@/assets/img/me-copy.jpeg'
+import image from '@/assets/img/placeholder.jpeg'
 import Search from '@/components/search//search'
 
 export default {

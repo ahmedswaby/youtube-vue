@@ -3,7 +3,7 @@
 		:class="size === 'sm' ? 'channel-section sm-section' : 'channel-section'"
 	>
 		<router-link to="/channel/1" class="channel-link">
-			<img src="@/assets/img/me-copy.jpeg" class="channel-image" alt="" />
+			<img src="@/assets/img/placeholder.jpeg" class="channel-image" alt="" />
 		</router-link>
 		<div class="channel-info">
 			<router-link to="/channel/1" class="channel-link">
