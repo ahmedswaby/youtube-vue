@@ -1,11 +1,11 @@
 <template>
     <div class="video-section playlist">
-        <router-link to="video/1" class="video-image-wrapper">
+        <router-link  :to="'/channel/' + data.channelId" class="video-image-wrapper">
             <div class="overlay-number">40</div>
             <img src="@/assets/img/placeholder.jpeg" class="img-fluid" alt="" />
         </router-link>
 		<div class="video-info">
-            <router-link to="video/1">
+            <router-link :to="'/channel/' + data.channelId" >
                 <h3>playList Name</h3>
                 <p>150 Videos</p>
             </router-link>

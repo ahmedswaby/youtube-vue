@@ -4,11 +4,20 @@
             <div class="d-flex space-between">
                 <div class="header__Logo-side">
                     <i class="icon-youtube"></i>
-                    <span v-if="!searchOpen">spongepop</span>
+                    <span v-if="!searchOpen">{{ search }}</span>
                 </div>
                 <div class='search-wrapper'>
-                    <form action="/search">
-                        <input  type="search" name="query" :class="searchOpen ? 'search-input opened': 'search-input'">
+                    <!-- @submit="submitSearch" -->
+                        <!-- :value="this.$route.params.text" -->
+                        <!-- action="/search" -->
+                    <form  action="/search">
+                        <input  
+                        v-model="   $route.query.query"
+                        type="search" 
+                        name="query" 
+                        :class="searchOpen ? 'search-input opened': 'search-input'"
+                        placeholder="search"
+                        >
                         <button type="submit">
                             <i class="icon-search"></i>
                         </button>
@@ -28,7 +37,8 @@ export default {
     name: 'Header',
     data() {
         return {
-                searchOpen: false
+                searchOpen: false,
+                search: ''
             }
         },
     }

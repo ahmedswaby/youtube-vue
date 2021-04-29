@@ -10,7 +10,7 @@ const routes = [
 		redirect: '/search',
 	},
 	{
-		path: '/search',
+		path: '/search/:text?',
 		name: 'Home',
 		component: SearchPage,
 	},

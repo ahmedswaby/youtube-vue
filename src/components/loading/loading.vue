@@ -1,13 +1,15 @@
 <template>
-    <div class="ytp-spinner" data-layer="4">
-        <div>
-            <div class="ytp-spinner-container">
-                <div class="ytp-spinner-rotator">
-                    <div class="ytp-spinner-left">
-                        <div class="ytp-spinner-circle"></div>
-                    </div>
-                    <div class="ytp-spinner-right">
-                        <div class="ytp-spinner-circle"></div>
+    <div class="loading-wrapper">
+        <div class="ytp-spinner" data-layer="4">
+            <div>
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,6 +24,11 @@
 </script>
 
 <style scoped>
+.loading-wrapper {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+}
 .ytp-spinner {
     position: relative;
     width: 64px;

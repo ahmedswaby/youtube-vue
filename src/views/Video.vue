@@ -16,7 +16,11 @@
         <div class=" d-sm-none d-md-flex">
             <ChannelView size="sm" :data="videoDetails"/>
         </div>
-        <!-- <VideoView /> -->
+        <VideoView
+            v-for="(video, index) in relatedVideo"
+            :key="index"
+            :videoId="video.id.videoId"
+        />
         </div>
         
     </div>
@@ -24,26 +28,30 @@
 
 <script>
 import search from '@/components/search/search';
-// import VideoView from '@/components/video/video';
+import VideoView from '@/components/video/video';
 import ChannelView from '@/components/channel/channel';
-import { fetchVideo } from '@/services/services'
+import { fetchVideo, fetchRelatedVideos } from '@/services/services'
 export default {
     name: 'VideoDetails',
     components: {
         search,
-        // VideoView,
+        VideoView,
         ChannelView
     },
     data() {
         return {
             videoDetails: {},
+            relatedVideo: []
         }
     },
     created: async function () {
         const data = await fetchVideo(this.$route.params.id)
         this.videoDetails = data.items[0].snippet
-        console.log(data.items[0].snippet);
-    },
+        // fetch related videos
+        const relatedVideo = await fetchRelatedVideos(this.$route.params.id)
+        this.relatedVideo = relatedVideo.items
+        this.scrollToTop()
+    }
 }
 </script>
 

@@ -25,7 +25,6 @@
         </div>
         <div class="container">
           <playlistView />
-
         </div>
       </div>
     </div>
@@ -36,6 +35,7 @@
 <script>
 import image from '@/assets/img/placeholder.jpeg'
 import Search from '@/components/search//search'
+import { fetchChannel } from '@/services/services'
 
 export default {
   name: "ChannelPage",
@@ -45,9 +45,15 @@ export default {
   },
   data() {
     return {
-      image: image
+      image: image,
+      channelData: [],
+      playListsData: [],
     }
-  }
+  },
+  async created() {
+      const data = await fetchChannel(this.$route.params.id)
+      this.channelData = data.items
+  },
 };
 </script>
 <style lang="scss" scoped>

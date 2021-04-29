@@ -2,11 +2,11 @@
 	<div
 		:class="size === 'sm' ? 'channel-section sm-section' : 'channel-section'"
 	>
-		<router-link to="/channel/1" class="channel-link">
+		<router-link :to="'/channel/' + data.channelId" class="channel-link">
 			<img src="@/assets/img/placeholder.jpeg" class="channel-image" alt="" />
 		</router-link>
 		<div class="channel-info">
-			<router-link to="/channel/1" class="channel-link">
+			<router-link :to="'/channel/' + data.channelId" class="channel-link">
 				<h3>{{data.channelTitle}} Name</h3>
 				<p>150 Videos</p>
 				<p>15,000 Subscriber</p>
@@ -29,6 +29,7 @@
 		},
     created: function () {
       console.log(this.data);
+      console.log(this.$route.params.id);
     }
 	};
 </script>

@@ -1,10 +1,10 @@
 <template>
 	<div class="video-section">
-		<router-link :to="'video/'+ videoDetails.id"  class="video-image-wrapper">
+		<router-link :to="'/video/'+ videoDetails.id"  class="video-image-wrapper">
 			<img :src="videoDetails.snippet ? videoDetails.snippet.thumbnails.medium.url: ''" class="img-fluid" alt="" />
 		</router-link>
 		<div class="video-info">
-            <router-link :to="'video/'+ videoDetails.id">
+            <router-link :to="'/video/'+ videoDetails.id">
 				<h3>{{ videoDetails.snippet ? videoDetails.snippet.title : '' }}</h3>
 				<p>150 Videos</p>
 				<p>15,000 Subscriber</p>
