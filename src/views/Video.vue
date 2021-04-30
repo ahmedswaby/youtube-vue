@@ -1,6 +1,8 @@
 <template>
     <div>
-        <search />
+        <div>
+            <Header />
+        </div>
         <div class="container">
             <!-- M7lc1UVf-VE -->
             <iframe id="ytplayer" type="text/html" width="100%" height="300px"
@@ -8,11 +10,10 @@
         frameborder="0"></iframe>
         <div class="video-title">
             <h1>{{videoDetails.title}}</h1>
-            <p class="d-flex d-md-none"><span>{{videoDetailschannelTitle}}</span> 
+            <p class="d-flex d-md-none"><span>{{videoDetails.channelTitle}}</span> 
             <!-- 122, 3323 -->
             </p>
         </div>
-        <!-- <div class="video-control"></div> -->
         <div class=" d-sm-none d-md-flex">
             <ChannelView size="sm" :data="videoDetails"/>
         </div>
@@ -21,36 +22,41 @@
             :key="index"
             :videoId="video.id.videoId"
         />
+        <a href="#" class="show-more" @click.prevent="loadMore" v-if="!loading">
+            Show more Items
+        </a>
         </div>
-        
     </div>
 </template>
 
 <script>
-import search from '@/components/search/search';
+import Header from '@/components/header/header';
 import VideoView from '@/components/video/video';
 import ChannelView from '@/components/channel/channel';
 import { fetchVideo, fetchRelatedVideos } from '@/services/services'
 export default {
     name: 'VideoDetails',
     components: {
-        search,
+        Header,
         VideoView,
         ChannelView
     },
     data() {
         return {
             videoDetails: {},
-            relatedVideo: []
+            relatedVideo: [],
+            loading: false,
         }
     },
-    created: async function () {
+    async created () {
         const data = await fetchVideo(this.$route.params.id)
         this.videoDetails = data.items[0].snippet
         // fetch related videos
         const relatedVideo = await fetchRelatedVideos(this.$route.params.id)
         this.relatedVideo = relatedVideo.items
-        this.scrollToTop()
+    },
+    loadMore() {
+        this.loading = true;
     }
 }
 </script>

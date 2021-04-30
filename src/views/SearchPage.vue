@@ -7,6 +7,7 @@
 					<v-select :options="UploadedSince"></v-select>
 					<v-select :options="FilterType"></v-select>
 				</div>
+				<searchFilter />
 				<div class="border d-flex">
 					<h2>About {{ pageInfo.totalResults }} results</h2>
 					<!-- <ChannelView /> -->
@@ -16,7 +17,7 @@
 						:videoId="item.id.videoId"
 					/>
 					<playlistView />
-					<a href="#" class="show-more" @click.prevent="load" v-if="!loading">
+					<a href="#" class="show-more" @click.prevent="loadMore" v-if="!loading">
 						Show more Items
 					</a>
 					<div class="d-flex justify-center" v-if="loading">
@@ -31,8 +32,8 @@
 
 <script>
 	// @ is an alias to /src
-	import Header from '@/components/header/Header.vue';
-	// import ChannelView from "@/components/channel/channel.vue";
+	import Header from '@/components/header/header.vue';
+	import searchFilter from '@/components/filter/filter.vue';
 	import VideoView from '@/components/video/video.vue';
 	import playlistView from '@/components/playlist/playlist.vue';
 	import { fetchSearch } from '@/services/services';
@@ -41,8 +42,7 @@
 	export default {
 		name: 'SearchPage',
 		components: {
-			// Search,
-			// ChannelView,
+			searchFilter,
 			Header,
 			VideoView,
 			playlistView,
@@ -61,7 +61,7 @@
 			this.getSearchResults(this.$route.query ? this.$route.query.query : '');
 		},
 		methods: {
-			load() {
+			loadMore() {
 				this.loading = true;
 			},
 			// Triggered when `childToParent` event is emitted by the child.
@@ -111,7 +111,7 @@
 		text-align: center;
 		border-top: 1px solid #c7c7c7;
 		border-bottom: 1px solid #c7c7c7;
-		width: 100%;
+		max-width: 100%;
 	}
 	@media (min-width: 1024px) {
 		main {

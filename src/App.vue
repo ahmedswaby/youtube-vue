@@ -38,7 +38,7 @@
 	.icon-search:before {
 		content: '\e986';
 	}
-	.icon-equalizer:before {
+	.icon-filter:before {
 		content: '\e992';
 	}
 	.icon-youtube:before {
@@ -50,9 +50,6 @@
 
 	html, body, #app {
 		min-height: 100vh;
-		// display: flex;
-		// justify-content: center;
-		// align-items: center;
 	}
 
 	#app {

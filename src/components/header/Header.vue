@@ -3,7 +3,9 @@
         <div class="container">
             <div class="d-flex space-between">
                 <div class="header__Logo-side">
-                    <i class="icon-youtube"></i>
+                    <a href="/search">
+                        <i class="icon-youtube"></i>
+                    </a>    
                     <span v-if="!searchOpen">{{ search }}</span>
                 </div>
                 <div class='search-wrapper'>
@@ -53,7 +55,14 @@ header {
     width: calc(100% - 20px);
     z-index: 1020;
 }
+
 .header__Logo-side {
+    a {
+        color: #FFF;
+        &:hover {
+            text-decoration: none;
+        }
+    }
     i {
         font-size: 40px;
     }
@@ -63,6 +72,7 @@ header {
         margin-inline-start: 10px;
     }
 }
+
 .search-wrapper {
     display: flex;
     align-items: center;
@@ -76,6 +86,7 @@ header {
         font-size: 22px;
     }
 }
+
 .search-input {
     display: none;
     &.opened {
