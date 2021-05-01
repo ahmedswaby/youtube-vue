@@ -10,15 +10,27 @@ const Api_Key = 'AIzaSyA5HW-CVsuqGMiDLV99tsGCgy_htwmoc_0';
 // client secret
 // const clientSecret = "QLBhmoN3J2ZMu3otdvZ1c3qQ"
 
-export const fetchSearch = async (searchText = '') => {
-	return await fetch(
-		`${url}/search?key=${Api_Key}&part=snippet,id&order=date&maxResults=20&q=${searchText}`
-	)
-		.then((res) => res.json())
-		.then((data) => {
-			return data;
-		})
-		.catch((err) => err);
+export const fetchSearch = async (searchText = '', pageToken) => {
+	if(pageToken) {
+		console.log(pageToken);
+		return await fetch(
+			`${url}/search?pageToken=${pageToken}&key=${Api_Key}&part=snippet,id&order=date&maxResults=20&q=${searchText}`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				return data;
+			})
+			.catch((err) => err);
+	} else {
+		return await fetch(
+			`${url}/search?key=${Api_Key}&part=snippet,id&order=date&maxResults=20&q=${searchText}`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				return data;
+			})
+			.catch((err) => err);
+	}
 };
 
 export const fetchRelatedVideos = async (relatedVideoId) => {

@@ -17,12 +17,10 @@
 						:videoId="item.id.videoId"
 					/>
 					<playlistView />
-					<a href="#" class="show-more" @click.prevent="loadMore" v-if="!loading">
+					<a href="#" class="show-more" @click.prevent="loadMore" v-if="!loadingMore">
 						Show more Items
 					</a>
-					<div class="d-flex justify-center" v-if="loading">
-						<Loading />
-					</div>
+					<Loading v-if="loadingMore" />
 				</div>
 			</div>
 		</main>
@@ -47,32 +45,38 @@
 			VideoView,
 			playlistView,
 			Loading: () => import('@/components/loading/loading.vue'),
+			
 		},
 		data() {
 			return {
 				loading: false,
+				loadingMore: false,
 				pageInfo: {},
-				searchdata: {},
+				searchdata: [],
 				UploadedSince: ['all', 'test1', 'test2'],
 				FilterType: ['Video', 'Channel', 'Playlist'],
+				nextPageToken: ''
 			};
 		},
 		created() {
 			this.getSearchResults(this.$route.query ? this.$route.query.query : '');
+				this.loading = false;
 		},
 		methods: {
 			loadMore() {
-				this.loading = true;
+				this.loadingMore = true;
+				this.getSearchResults(this.$route.query ? this.$route.query.query : '', this.nextPageToken)
+				this.loadingMore = false;
 			},
-			// Triggered when `childToParent` event is emitted by the child.
-			async getSearchResults(value) {
+			async getSearchResults(value, nextPageToken) {
 				this.loading = true;
-				const searchData = await fetchSearch(value);
-				this.searchdata = searchData.items.filter(
+				const searchData = await fetchSearch(value, nextPageToken);
+				const filterData = searchData.items.filter(
 					(item) => item.id.kind === 'youtube#video'
 				);
+				this.searchdata.push(...filterData)
 				this.pageInfo = searchData.pageInfo;
-				this.loading = false;
+				this.nextPageToken = searchData.nextPageToken
 			},
 		},
 	};
@@ -111,7 +115,7 @@
 		text-align: center;
 		border-top: 1px solid #c7c7c7;
 		border-bottom: 1px solid #c7c7c7;
-		max-width: 100%;
+		width: 100%;
 	}
 	@media (min-width: 1024px) {
 		main {

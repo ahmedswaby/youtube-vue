@@ -19,15 +19,16 @@
 
 <script>
     export default {
-        name: 'Loading'
+        name: 'Loading',
     }
 </script>
 
 <style scoped>
 .loading-wrapper {
     display: flex;
-    min-height: 100vh;
+    min-height: 10vh;
     justify-content: center;
+    width: 100%;
 }
 .ytp-spinner {
     position: relative;

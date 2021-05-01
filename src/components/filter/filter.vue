@@ -81,6 +81,9 @@ export default {
     justify-content: flex-end;
     padding: 20px;
     text-transform: capitalize;
+    i {
+      margin-inline-end: 10px;
+    }
   }
   .filter-wrapper {
     display: flex;
