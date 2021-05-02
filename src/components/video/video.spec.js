@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import VideoView from './video.vue';
 
 describe('fetch every video', () => {
-    it('test props ', () => {
-
-        const wrapper = mount(VideoView, {
+    it('test props', () => {
+        const wrapper = shallowMount(VideoView, {
+			stubs: ['router-link'],
             propsData: {
                 videoId: {
                     snippet: 'test',

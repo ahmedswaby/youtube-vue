@@ -3,10 +3,6 @@
 		<Header />
 		<main>
 			<div class="container">
-				<div class="select-wrappers">
-					<v-select :options="UploadedSince"></v-select>
-					<v-select :options="FilterType"></v-select>
-				</div>
 				<searchFilter />
 				<div class="border d-flex">
 					<h2>About {{ pageInfo.totalResults }} results</h2>
@@ -53,8 +49,6 @@
 				loadingMore: false,
 				pageInfo: {},
 				searchdata: [],
-				UploadedSince: ['all', 'test1', 'test2'],
-				FilterType: ['Video', 'Channel', 'Playlist'],
 				nextPageToken: ''
 			};
 		},

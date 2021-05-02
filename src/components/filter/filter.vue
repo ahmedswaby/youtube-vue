@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#" @click.prevent="toggleFilter = !toggleFilter" class="filter-btn">
+    <a href="#" @click.prevent="toggleFilter = !toggleFilter" class="filter-btn d-sm-none">
       <i class="icon-filter"></i>
       filter
     </a>
@@ -16,7 +16,7 @@
       <div class="filter-section">
         <h3>Type</h3>
         <div class="filters">
-          <a href="#" v-for="item in typeFilter" :key="item" @click.prevent="filterSearch('type', item)"
+          <a href="#" v-for="item in filterType" :key="item" @click.prevent="filterSearch('type', item)"
           :class="activetypeFilter === item ? 'selected' : ''">
             {{ item }}
           </a>
@@ -34,6 +34,10 @@
       </div>
 
     </div>
+    <div class="select-wrappers">
+          <v-select :options="uploadDateFilters"></v-select>
+          <v-select :options="filterType"></v-select>
+      </div>
   </div>
 </template>
 
@@ -43,8 +47,8 @@ export default {
   name: "searchFilter",
   data() {
     return {
+      filterType: ['Video', 'Channel', 'Playlist'],
       uploadDateFilters: ['last hour', 'today', 'this week' , 'this Month'],
-      typeFilter: ['Video' , 'Channel' , 'PlayList'],
       sortByFilter: ['relevance', 'upload date', 'view count', 'rating'],
       activeUploadDate: '',
       activetypeFilter: '',

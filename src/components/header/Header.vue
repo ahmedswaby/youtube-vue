@@ -14,7 +14,7 @@
                         <!-- action="/search" -->
                     <form  action="/search">
                         <input  
-                        v-model="   $route.query.query"
+                        v-model="$route.query.query"
                         type="search" 
                         name="query" 
                         :class="searchOpen ? 'search-input opened': 'search-input'"
@@ -40,7 +40,6 @@ export default {
     data() {
         return {
                 searchOpen: false,
-                search: ''
             }
         },
     }
